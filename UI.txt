@@ -1,0 +1,41 @@
+UI
+
+View 1:
+	welcome page
+	search options
+		venue name
+		if seating plans listed then
+			show a saved venue list
+		advance
+			shows a drop down serise
+
+					location group
+					location type
+					results
+
+
+View 2:
+
+	Venue data consetina
+		adress
+		features
+		stats
+
+	drop down for section/screen with view button
+
+
+View 3:
+
+	option 1:
+
+		seat number sliders with a pic panel above that refreshes once slider has stopped
+
+	Option 2:
+
+		seating lay out with zoom opions 
+		once seat is seen tap to reveal a pop up style view pic
+
+	Additions to the above:
+
+		if accout has a seat for this screen in their fav's then add it to the screen as a drop down.
+

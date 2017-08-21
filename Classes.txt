@@ -1,0 +1,54 @@
+Classes:
+
+Venue:
+	venueId
+	name
+	localId
+	grpIocalId
+	type
+	capacity
+	seatingProfId
+	rating
+
+Location extends Venue
+	localId
+	addLine1
+	addLine2
+	addLine3
+	addLine4
+	cityTown
+	postcode
+
+GroupLocation
+	grpLocalId
+	location
+	noVenues
+
+
+SeatingProfile
+	seatingProfId*
+	multiroom
+	style
+	seatingPlan
+
+SeatingPlan
+	seating
+
+Seating
+	seatId
+	room
+	rating
+	imagePath
+
+User
+	username
+	firstName
+	LastName
+	savedSeatingPlans
+	favSeatingList
+
+SavedSeatingPlans
+	savedSeatingPlans
+
+FavoriteSeatingList <<link with seating as it is the same thing>>
+	favSeatingList 

@@ -1,0 +1,43 @@
+user Stories:
+
+	I want to be able to view a seat I choose
+
+	I want to be able to log in 
+
+	I want to be able to save a seat for future reference.
+
+	I want to have off-line access to a venue of my choice
+
+	I want to be able to book tickets for that venue from venue home page or seat page
+
+	I want to be able to rate a seat, location or venue
+
+	I want to be able to contact site admin for any issues with my account
+
+	I want to be able to upload alternative suggestion of an amendment
+
+	I want to be able to search using venue name
+
+	I want to navigate to a venue via a list process
+
+	I want to be able to access the seat view with out logging in
+
+	I want to be able to comment on a seat
+
+	I want to request a venue get added
+
+	A venue can have the option to advertise on their venue page
+
+	A venue can advertise on the home page
+
+	I want to view the best seat in a venue 
+
+	Integration with trip advisor on venue ratings
+
+	Integrate with social media to share their fav view
+
+	Integrate with social media to share their current view
+
+	Integrate with social media to share their fav venue
+
+	Integrate with social media to share their recent ratings

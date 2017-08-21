@@ -1,0 +1,67 @@
+Whats my view:
+
+Data Model
+
+Venue:
+	venue_id
+	name
+	local_id
+	grp_local_id
+	type
+	capacity
+	seating_prof_id
+	rating
+
+Location
+	local_id
+	add_line_1
+	add_line_1
+	add_line_1
+	add_line_1
+	city_town
+	postcode
+
+Group_Location
+	grp_local_id
+	location
+	no_venues
+
+
+Seating_profile
+	seating_prof_id
+	multi-room
+	style
+	seating_plan_id
+
+Seating_Plan
+	seating_plan_id
+	seating_id
+
+Seating
+	seating_id
+	seat_id
+	room
+	rating
+	image_path
+
+User
+	username
+	first_name
+	Last_name
+	saved_seating_plans
+	fav_seating_list
+
+Saved_Seating_plans
+	saved_seating_plans
+	seating_plan_id
+
+Favorite_Seating_List
+	fav_seating_list
+	seating_plan_id
+	seating_id
+	seat_id
+
+
+
+
+
