@@ -1,0 +1,9 @@
+location
+grouplocation
+Seating
+SeatingPlan
+Seating Profile
+Saved seating plan
+Venue
+user
+favorite seating
