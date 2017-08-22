@@ -7,13 +7,13 @@ CREATE TABLE Venue (
     capacity int(7),
     seating_prof_id int(10),
     rating varchar(1),
-    Primary Key(venue_id)
+    Primary Key(venue_id),
     Foreign Key(local_id)
         References Location(local_id)
-        On Delete Set Null
+        On Delete Set Null,
     Foreign Key(group_local_id)
         References Group_Location(group_local_id)
-        On Delete Set Null
+        On Delete Set Null,
     Foreign Key(seating_prof_id)
         References Seating_Profile(seating_prof_id)
         On Delete Set Null
