@@ -14,6 +14,6 @@ CREATE TABLE Users(
         REFERENCES Saved_Seating_Plans(saved_seating_plans)
         ON DELETE SET NULL,
     FOREIGN KEY (fav_seating_list)
-        REFERENCES Favorite_Seating_Plan(fav_seating_list_id)
+        REFERENCES Favourite_Seating_Plan(fav_seating_list_id)
         ON DELETE SET NULL
 )
