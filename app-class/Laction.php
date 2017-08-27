@@ -4,13 +4,13 @@
 	*/
 	class Location{
 
-		private int $localId;
-		private string $addLine1;
-		private string $addLine2;
-		private string $addLine3;
-		private string $addLine4;
-		private string $cityTown;
-		private string $postcode;
+		private $localId;
+		private $addLine1;
+		private $addLine2;
+		private $addLine3;
+		private $addLine4;
+		private $cityTown;
+		private $postcode;
 
 		function __construct(){
             $a = func_get_args();
@@ -26,47 +26,47 @@
 			//default contructor
 		}
 
-		function int setLocalId($LocalId){
+		function setLocalId($LocalId){
 			$this->localId = $LocalId;
 		}
-		function string setAddLine1($AddLine1){
+		function setAddLine1($AddLine1){
 			$this->addLine1 = $AddLine1;
 		}
-		function string setAddLine2($AddLine2){
+		function setAddLine2($AddLine2){
 			$this->addLine2 = $AddLine2;
 		}
-		function string setAddLine3($AddLine3){
+		function setAddLine3($AddLine3){
 			$this->addLine3 = $AddLine3;
 		}
-		function string setAddLine4($AddLine4){
+		function setAddLine4($AddLine4){
 			$this->addLine4 = $AddLine4;
 		}
-		function string setCityTown($CityTown){
+		function setCityTown($CityTown){
 			$this->cityTown = $CityTown;
 		}
-		function string setPostcode($Postcode){
+		function setPostcode($Postcode){
 			$this->postcode = $Postcode;
 		}
 
-		function int getLocalId(){
+		function getLocalId(){
 			return $this->localId;
 		}
-		function string getAddLine1(){
+		function getAddLine1(){
 			return $this->addLine1;
 		}
-		function string getAddLine2(){
+		function getAddLine2(){
 			return $this->addLine2;
 		}
-		function string getAddLine3(){
+		function getAddLine3(){
 			return $this->addLine3;
 		}
-		function string getAddLine4(){
+		function getAddLine4(){
 			return $this->addLine4;
 		}
-		function string getCityTown(){
+		function getCityTown(){
 			return $this->cityTown;
 		}
-		function string getPostcode(){
+		function getPostcode(){
 			return $this->postcode;
 		}
 	}

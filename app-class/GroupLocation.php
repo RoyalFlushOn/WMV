@@ -1,9 +1,9 @@
 <?php
 	class GroupLocation{
 
-		private int $grpLocalId;
-		private string $location;
-		private int $noVenues;
+		private $grpLocalId;
+		private $location;
+		private $noVenues;
 
 		function __construct(){
             $a = func_get_args();
@@ -19,23 +19,23 @@
 			//default contructor
 		}
 
-		function int setGrpLocalId($GrpLocalId){
+		function setGrpLocalId($GrpLocalId){
 			$this->grpLocalId = $GrpLocalId;
 		}
-		function string setLocation($Location){
+		function setLocation($Location){
 			$this->location = $Location;
 		}
-		function int setNoVenues($NoVenues){
+		function setNoVenues($NoVenues){
 			$this->noVenues = $NoVenues;
 		}
 
-		function int getGrpLocalId(){
+		function getGrpLocalId(){
 			return $this->grpLocalId;
 		}
-		function string getLocation(){
+		function getLocation(){
 			return $this->location;
 		}
-		function int getNoVenues(){
+		function getNoVenues(){
 			return $this->noVenues;
 		}
 	}
