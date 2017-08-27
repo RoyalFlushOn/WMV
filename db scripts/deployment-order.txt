@@ -1,0 +1,9 @@
+/Applications/MAMP/htdocs/wmv/db scripts/location.sql
+/Applications/MAMP/htdocs/wmv/db scripts/group-location.sql
+/Applications/MAMP/htdocs/wmv/db scripts/seating.sql
+/Applications/MAMP/htdocs/wmv/db scripts/seating-plans.sql
+/Applications/MAMP/htdocs/wmv/db scripts/seating-profile.sql
+/Applications/MAMP/htdocs/wmv/db scripts/saved-seating-plan.sql
+/Applications/MAMP/htdocs/wmv/db scripts/venue.sql
+/Applications/MAMP/htdocs/wmv/db scripts/favorite-seating-list.sql
+/Applications/MAMP/htdocs/wmv/db scripts/user.sql
