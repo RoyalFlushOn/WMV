@@ -1,0 +1,9 @@
+Attributes:
+
+constructors:
+
+functions:
+
+    groupLocalList($) -
+                    lists all the venues stored in the databse in alphabetical 
+                    order. The the results are passed back as a array.
