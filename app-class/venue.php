@@ -1,4 +1,5 @@
 <?php
+    include 'appClass/Autoloader.php';
 
     class Venue extends Location{
 
@@ -23,6 +24,50 @@
 		{
 			//default contructor
 		}
+
+        function __construct7($a1,$a2,$a3,$a4,$a5,$a6,$a7){
+
+            $this->venueId = $a1;
+            $this->name = $a2;
+            $this->groupLocal = $a3;
+            $this->type = $a4;
+            $this->capacit = $a5;
+            $this->seatingProf = $a6;
+            $this->rating = $a7;
+
+        }
+
+        function __construct7($a1,$a2,$a3,$a4,$a5,$a6,$a7
+                                ,$a8,$a9,$a10,$a11,$a12,$a13,$a14){
+
+            $this->venueId = $a1;
+            $this->name = $a2;
+            $this->groupLocal = $a3;
+            $this->type = $a4;
+            $this->capacit = $a5;
+            $this->seatingProf = $a6;
+            $this->rating = $a7;
+            $this->localId = $a8;
+            $this->addLine1 = $a9;
+            $this->addLine2 = $a10;
+            $this->addLine3 = $a11;
+            $this->addLine4 = $a12;
+            $this->cityTown = $a13;
+            $this->postcode = $a14;
+        }
+
+        function getVenue($name){
+            $db = new DataAccess();
+
+            $temp = $db->returnQuery('select * from Venue v join Location l on v.local_id = l.local_id
+                                where name ="' . $name . '"');
+
+            $res = $temp->fetchall();
+
+            return $ven = new Venue($res['venue_id'],$res['name'],$res['group_local_id'],$res['type'],$res['capacity'],$res['seating_prof_id'],
+                                        $res['rating'],$res['local_id'],$res['add-line1'],$res['add-line2'],$res['add-line3'],
+                                        $res['add-line4'],$res['city_town'],$res['postcode']);
+        }
 
 
         function setVenueId ($VenueId){
