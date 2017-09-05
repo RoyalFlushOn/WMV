@@ -37,8 +37,7 @@
 
         }
 
-        function __construct7($a1,$a2,$a3,$a4,$a5,$a6,$a7
-                                ,$a8,$a9,$a10,$a11,$a12,$a13,$a14){
+        function __construct14($a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10,$a11,$a12,$a13,$a14){
 
             $this->venueId = $a1;
             $this->name = $a2;
@@ -60,7 +59,7 @@
             $db = new DataAccess();
 
             $temp = $db->returnQuery('select * from Venue v join Location l on v.local_id = l.local_id
-                                where name ="' . $name . '"');
+                                where v.name ="' . $name . '"');
 
             $res = $temp->fetchall();
 
