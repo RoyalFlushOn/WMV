@@ -1,0 +1,12 @@
+Attributes:
+
+constructors:
+
+functions:
+
+    venueAutoCmp($srchVal) -
+                lists all the venues stored in the databse in alphabetical 
+                order using the passed in value to us in the search SQL. 
+                The the results are passed back as a array.
+            
+    
