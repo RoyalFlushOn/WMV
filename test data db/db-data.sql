@@ -35,11 +35,11 @@ INSERT INTO Seating (`seating_id`, `seat_name`, `rating`,`image_path`, `seating_
 
 
 INSERT INTO `Venue` (`venue_id`, `name`, `local_id`, `group_local_id`, `type`, `capacity`, `seating_prof_id`, `rating`) VALUES 
-(10001, 'Venue 1', 20001, NULL, 'Type 1', 25, NULL, 1),
-(10002, 'Venue 2', 20002, NULL, 'Type 2', 30, NULL, 2),
-(10003, 'Venue 3', 20003, NULL, 'Type 3', 40, NULL, 3),
-(10004, 'Venue 4', 20004, NULL, 'Type 4', 50, NULL, 4),
-(10005, 'Venue 5', 20005, NULL, 'Type 5', 60, NULL, 5);
+(10001, 'Venue 1', 20001, 60001, 'Type 1', 25, 30001, 1),
+(10002, 'Venue 2', 20002, 60002, 'Type 2', 30, 30002, 2),
+(10003, 'Venue 3', 20003, 60003, 'Type 3', 40, 30003, 3),
+(10004, 'Venue 4', 20004, 60004, 'Type 4', 50, 30004, 4),
+(10005, 'Venue 5', 20005, 60005, 'Type 5', 60, 30005, 5);
 
 INSERT INTO Favourite_Seating_List (`fav_seating_list_id`, `seating_plan_id`, `seating_id`) VALUES
 (70001, 40001, 50001),
