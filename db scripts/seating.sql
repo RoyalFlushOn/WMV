@@ -6,6 +6,6 @@ CREATE TABLE Seating(
 	seating_plan_id int(10),
     PRIMARY KEY (seating_id),
 	FOREIGN KEY (seating_plan_id)
-		REFERENCES Seating_Plan(seating_plan_id)
+		REFERENCES Seating_Plans(seating_plan_id)
 		ON DELETE SET NULL
 )

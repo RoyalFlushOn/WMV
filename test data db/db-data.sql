@@ -48,7 +48,7 @@ INSERT INTO Favourite_Seating_List (`fav_seating_list_id`, `seating_plan_id`, `s
 (70004, 40002, NULL),
 (70005, 40004, 50005);
 
-INSERT INTO USER (`user_id`, `username`, `first_name`, `last_name`, `location_id`, `fav_seating_list`) VALUES
+INSERT INTO Users (`user_id`, `username`, `password`, `first_name`, `last_name`, `location_id`, `fav_seating_list`) VALUES
 (90001, 'userName1', 'pass1', 'first1', 'Last1', 20001, 70001),
 (90002, 'userName2', 'pass1', 'first2', 'Last2', 20002, 70002),
 (90003, 'userName3', 'pass3', 'first3', 'Last3', 20003, 70003),

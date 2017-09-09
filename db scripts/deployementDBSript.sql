@@ -25,7 +25,7 @@ CREATE TABLE Seating_Profile(
 
 CREATE TABLE Seating_Plans(
     seating_plan_id int(10),
-    name varchar(15)
+    name varchar(15),
 	seating_prof_id int(10),
     Primary key (seating_plan_id),
     Foreign key (seating_prof_id)
@@ -41,7 +41,7 @@ CREATE TABLE Seating(
 	seating_plan_id int(10),
     PRIMARY KEY (seating_id),
 	FOREIGN KEY (seating_plan_id)
-		REFERENCES Seating_Plan(seating_plan_id)
+		REFERENCES Seating_Plans(seating_plan_id)
 		ON DELETE SET NULL
 );
 
@@ -66,7 +66,7 @@ CREATE TABLE Venue (
         On Delete Set Null
 );
 
-CREATE TABLE Favourite_Seating_Plan(
+CREATE TABLE Favourite_Seating_List(
     fav_seating_list_id int(10),
 	seating_plan_id int(10),
 	seating_id int(10),
@@ -74,7 +74,7 @@ CREATE TABLE Favourite_Seating_Plan(
     Foreign Key (seating_plan_id)
         REFERENCES Seating_Plans(seating_plan_id)
         ON DELETE SET NULL,
-    Foreign Key (seating_id, seat_id)
+    Foreign Key (seating_id)
         REFERENCES Seating(seating_id)
         ON DELETE SET NULL   
 );
@@ -92,6 +92,6 @@ CREATE TABLE Users(
         REFERENCES Location(local_id)
         ON DELETE SET NULL,
     FOREIGN KEY (fav_seating_list)
-        REFERENCES Favourite_Seating_Plan(fav_seating_list_id)
+        REFERENCES Favourite_Seating_List(fav_seating_list_id)
         ON DELETE SET NULL
 );
