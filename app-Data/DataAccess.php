@@ -21,7 +21,7 @@
             $this->password = 'root';
             
             try{
-                $this->dbConn = new PDO("mysql:host=$this->serverName;dbname=RFO", $this->username, $this->password);
+                $this->dbConn = new PDO("mysql:host=$this->serverName;dbname=WMV", $this->username, $this->password);
                 $this->dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
                 return 'done and dusted';
@@ -37,8 +37,8 @@
             
             $stmt = $this->dbConn->prepare($query);
             
-            if($stmt->exceute()){
-                return $temp;
+            if($stmt->execute()){
+                return $stmt;
             } else {
                 return null;
             }
@@ -52,8 +52,8 @@
             
             $stmt = $this->dbConn->prepare($query);
             
-            if($stmt->exceute()){
-                return $temp;
+            if($stmt->execute()){
+                return $stmt;
             } else {
                 return null;
             }

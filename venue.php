@@ -1,25 +1,26 @@
 <?php 
-    include 'appClas/Autoloader.php';
+    include 'app-Class/Autoloader.php';
 
     if($_GET['venue']){
+
         $venueName =  $_GET['venue'];
+        
+        $venue = new Venue($venueName);
 
-        $ven = new Venue();
-        $venue = new Venue();
+        //print_r($venue);
 
-        $venue = $ven->getVenue($venueName);
-
-        display($venue);
+        if(empty($venue->getName())){
+            echo '<script>
+                        location.href = "http://localhost:8888/WMV";
+                </script>';
+        }
     }
-    
-
-    // echo $_GET['db'];
 ?>
 
 <ul>
     <li><?php echo $venue->getVenueId();?></li>
     <li><?php echo $venue->getName(); ?></li>
-    <li><?php echo $venue->getLocal(); ?></li>
+    <li><?php echo $venue->getLocalId(); ?></li>
     <li><?php echo $venue->getCityTown(); ?></li>
     <!-- <li><?php //echo $venue->get?></li>
     <li><?php //echo $venue->get?></li>
