@@ -1,25 +1,31 @@
-<?php 
-    include 'appClas/Autoloader.php';
+<?php session_start();
+    include 'app-Class/Autoloader.php';
 
     if($_GET['venue']){
+
         $venueName =  $_GET['venue'];
+        
+        $venue = new Venue($venueName);
 
-        $ven = new Venue();
-        $venue = new Venue();
+        //print_r($venue);
 
-        $venue = $ven->getVenue($venueName);
+        if(empty($venue->getName())){
 
-        display($venue);
+            $msg = new Message('The venue you have searched for is incorrorect, please use the search function in the menue below.', 'info');
+
+            $_SESSION['message'] = json_encode($msg);
+
+            echo '<script>
+                        location.href = "http://localhost:8888/WMV";
+                </script>';
+        }
     }
-    
-
-    // echo $_GET['db'];
 ?>
 
 <ul>
     <li><?php echo $venue->getVenueId();?></li>
     <li><?php echo $venue->getName(); ?></li>
-    <li><?php echo $venue->getLocal(); ?></li>
+    <li><?php echo $venue->getLocalId(); ?></li>
     <li><?php echo $venue->getCityTown(); ?></li>
     <!-- <li><?php //echo $venue->get?></li>
     <li><?php //echo $venue->get?></li>

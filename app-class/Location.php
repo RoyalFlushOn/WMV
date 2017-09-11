@@ -2,15 +2,15 @@
 	/**
 	* 
 	*/
-	class Location{
+	abstract class Location{
 
-		private $localId;
-		private $addLine1;
-		private $addLine2;
-		private $addLine3;
-		private $addLine4;
-		private $cityTown;
-		private $postcode;
+		protected $localId;
+		protected $addLine1;
+		protected $addLine2;
+		protected $addLine3;
+		protected $addLine4;
+		protected $cityTown;
+		protected $postcode;
 
 		function __construct(){
             $a = func_get_args();
@@ -24,6 +24,17 @@
 		function __construct0()
 		{
 			//default contructor
+		}
+
+		function __construct7($a1,$a2,$a3,$a4,$a5,$a6,$a7){
+			
+			$this->localId = $a1;
+			$this->addLine1 = $a2;
+			$this->addLine2 = $a3;
+			$this->addLine3 = $a4;
+			$this->addLine4 = $a5;
+			$this->cityTown = $a6;
+			$this->postcode = $a7;
 		}
 
 		function setLocalId($LocalId){
