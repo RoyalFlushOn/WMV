@@ -1,4 +1,4 @@
-<?php 
+<?php session_start();
     include 'app-Class/Autoloader.php';
 
     if($_GET['venue']){
@@ -10,6 +10,11 @@
         //print_r($venue);
 
         if(empty($venue->getName())){
+
+            $msg = new Message('The venue you have searched for is incorrorect, please use the search function in the menue below.', 'info');
+
+            $_SESSION['message'] = json_encode($msg);
+
             echo '<script>
                         location.href = "http://localhost:8888/WMV";
                 </script>';
