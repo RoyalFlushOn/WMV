@@ -28,7 +28,7 @@ $('#venueTxtBx').on('autocompleteselect', function(){
 $('#venueSrchBtn').on('click', function(){
     venue = $('#venueTxtBx').val();
 
-    location.href = 'http://localhost:8888/WMV/venue.php?venue=' + venue + '&db=' + dbVenue;
+    location.href = 'http://localhost:8888/WMV/venue.php?venue=' + venue ;
 });
 
 $('#locationDrpDwn li a').on('click', function(e){

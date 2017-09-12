@@ -1,4 +1,6 @@
 <?php
+	include 'app-class/AutoLoader.php';
+
 	class GroupLocation{
 
 		private $grpLocalId;
@@ -17,6 +19,19 @@
 		function __construct0()
 		{
 			//default contructor
+		}
+
+		function listOfGroupLocations(){
+
+			$dt = new DataAccess();
+
+			$stmt = $dt->returnQuery('select location from Group_Location order by location');
+			
+			if($stmt->execute()){
+				return $stmt;
+			} else {
+				return false;
+			}
 		}
 
 		function setGrpLocalId($GrpLocalId){
