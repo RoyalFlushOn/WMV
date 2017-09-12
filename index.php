@@ -1,31 +1,36 @@
-<?php 
-//    $grpLoc = new GroupLocation();
+<?php session_start();
+    include 'app-class/Autoloader.php';
 
-//    $res = $grploc->groupLocalList();
+    $message = '';
+    
+    if(isset($_SESSION['message'])){
+        $tmp = $_SESSION['message'];
 
-    $serverName = 'localhost';
-    $username = 'root';
-    $password = 'root';
-            
-    try{
-        $dbConn = new PDO("mysql:host=$serverName;dbname=WMV", $username, $password);
-        $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $msg = json_decode($tmp);
+
+        if($msg->msgFlag){
+            $message = '<div class="alert alert-' . $msg->type . '"><strong>Msg!</strong> ' . $msg->message .'</div>';
+            $msg->msgFlag = false;
+            $_SESSION['message'] =null;
+        }
         
     }
-    catch (PDOException $e){
-        // return 'woops: ' . $e->getMessage();
-    }
 
-    $stmt = $dbConn->prepare('select location from Group_Location order by location');
     
-    if($stmt->execute()){
 
-        while($row = $stmt->fetch()){
-            $res[] = $row['location'];
-        }
+    $grpLoc = new GroupLocation();
 
-        foreach($res as $loc){
-            $locList .= '<li><a href="#" tabindex="-1">' . $loc .'</a></l>'; 
+    $stmt = $grpLoc->listOfGroupLocations();
+
+    $res = $stmt->fetchall(PDO::FETCH_ASSOC);
+    
+    if(!empty($res)){
+
+        foreach($res as $set){
+
+            foreach($set as $loc){
+                $locList .= '<li><a href="#" tabindex="-1">' . $loc .'</a></l>';
+            }             
         }
     } else {
         $locList = 'Error, Apologies';
@@ -54,6 +59,7 @@
 
     <body>
             <div id="titleLinks" class="container-fluid">
+            <?php echo $message; ?>
             <ul>
                 <li><a href="">about Us</a></li>
                 <li><a href="">contact Us</a></li>

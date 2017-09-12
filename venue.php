@@ -11,7 +11,12 @@
 
         if(empty($venue->getName())){
 
-            $msg = new Message('The venue you have searched for is incorrorect, please use the search function in the menue below.', 'info');
+            $msg = new Message();
+
+            $msg->message = 'The venue you have searched for is incorrorect, please use the search function in the menue below.';
+            $msg->type=  'info';
+            $msg->msgFlag=true;
+            $msg->responceFlag =false;
 
             $_SESSION['message'] = json_encode($msg);
 
