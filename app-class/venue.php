@@ -91,10 +91,15 @@
                                 where v.name ="' . $name . '"');
 
             return $res = $temp->fetchall();
+        }
 
-            // return $ven = new Venue($res['venue_id'],$res['name'],$res['group_local_id'],$res['type'],$res['capacity'],$res['seating_prof_id'],
-            //                             $res['rating'],$res['local_id'],$res['add-line_1'],$res['add-line_2'],$res['add-line_3'],
-            //                             $res['add-line_4'],$res['city_town'],$res['postcode']);
+        function searchVenue($name){
+            $db = new DataAccess();
+            
+            $temp = $db->returnQuery('select * from Venue v join Location l on v.local_id = l.local_id
+                                where v.name like "%' . $name . '%" order by name;');
+
+            return $res = $temp->fetchall();
         }
 
 

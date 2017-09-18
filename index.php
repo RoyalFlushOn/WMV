@@ -44,21 +44,60 @@
 <html>
     <head>
     <!-- Bootstrap Requirement -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script> -->
     <!--                       -->
 
     <!-- AutoComplete requirement -->
-         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+         <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
          <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
     <!--                         -->
+
+        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
+        crossorigin="anonymous"></script>
+        <script src="semantic/dist/semantic.min.js"></script>
     </head> 
 
     <body>
-            <div id="titleLinks" class="container-fluid">
+
+        <div class="ui visible sidebar inverted vertical menu">
+        <a  class="item">about Us</a>
+        <a  class="item">contact Us</a>
+        <a  class="item">suggest Venue</a>
+        <div class="ui search">
+            <div class="ui icon input">
+                <input type="text" class="prompt" placeholder="Venue Name..." id="venueTxtBx">
+                <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+        </div>
+        <!-- <div class="ui button">Search</button> -->
+        <!-- <div class="ui left pointing dropdown link item">
+            <i class="dropdown icon"></i>
+            Venue
+            <div class="menu">
+                <div class="item">
+                    <div class="ui loading search">
+                        <div class="ui icon input">
+                            <input type="text" class="prompt" placeholder="Venue Name..." id="venueTxtBx">
+                            <i class="search icon"></i>
+                        </div>
+                        <div class="results"></div>
+                    </div>
+                    <div class="ui button">Search</button>
+                </div>
+            </div>
+        </div> -->
+        </div>
+        <div class="pusher">
+            content
+        </div>
+            <!-- <div id="titleLinks" class="container-fluid">
             <?php echo $message; ?>
             <ul>
                 <li><a href="">about Us</a></li>
@@ -89,7 +128,7 @@
                     
                     </li><button type="button" class="btn btn-primary" id="locSrchBtn" name="locSrchBtn">Search</button>
                 </ul> 
-            </div>
+            </div> -->
         </body>  
 
         <script src="./js/index.js"></script>     
