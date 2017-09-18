@@ -3,6 +3,7 @@
     $serverName = 'localhost';
     $username = 'root';
     $password = 'root';
+    
             
             try{
                 $dbConn = new PDO("mysql:host=$serverName;dbname=WMV", $username, $password);
@@ -14,9 +15,9 @@
             }
     
 
-    if(!empty($_GET['term'])){
+    if(!empty($_GET['ven'])){
 
-        $venue = $_GET['term'];
+        $venue = $_GET['ven'];
 
         $stmt = $dbConn->prepare('select name from Venue where name like "%' . $venue . '%" order by name;');
         
@@ -30,15 +31,18 @@
 
         if($stmt->execute()){
 
-            while($row = $stmt->fetch()){
-                $res[] = $row['name'];
-            }
+            // while($row = $stmt->fetch()){
+            //     $res = $row['name'];
+            // }
+
+            $res = $stmt->fetchall(PDO::FETCH_ASSOC);
             
         } else {
             echo 'Error';
         }
 
-        echo json_encode($res);
+        //  print_r(json_encode($res)); //testing
+        exit(json_encode($res));
 
         // $ven = new $Venue();
 

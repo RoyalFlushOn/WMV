@@ -17,18 +17,22 @@ var dbVenue = false;
 
 $('#locSrchBtn').hide();
 
-$('#venueTxtBx').autocomplete({
-    source: './services/venue-rest.php'
+$('#venueTxtBx').search({
+    apiSettings: {
+        url: './services/venue-rest.php?ven={query}'
+    },
+    type : 'category',
+    minCharacters: 3
 });
 
-$('#venueTxtBx').on('autocompleteselect', function(){
-    dbVenue = true;
-});
+// $('#venueTxtBx').on('autocompleteselect', function(){
+//     dbVenue = true;
+// });
 
 $('#venueSrchBtn').on('click', function(){
     venue = $('#venueTxtBx').val();
 
-    location.href = 'http://localhost:8888/WMV/venue.php?venue=' + venue ;
+    location.href = 'http://localhost:8888/WMV/venue.php?venue=' + venue + '&db=' + dbVenue;
 });
 
 $('#locationDrpDwn li a').on('click', function(e){
