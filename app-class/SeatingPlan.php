@@ -1,4 +1,5 @@
 <?php
+    include ('app-class/Autoloader.php');
 
     class SeatingPlan{
 
@@ -17,7 +18,19 @@
 		function __construct0()
 		{
 			//default contructor
-		}
+        }
+        
+        function seatingPlansFromVenue($id){
+            $db = new DataAccess();
+			
+            $stmt = $db->returnQuery('select spl.seating_plan_id, spl.name from Seating_Plans spl inner join Venue v on spl.seating_prof_id = v.seating_prof_id where v.venue_id = ' . $id);
+            
+            if($stmt->execute()){
+                return $stmt;
+            } else {
+                return false;
+            }
+        }
 
         function setSeatingPlanId($SeatingPlanId){
             $this->seatingPlanId = $SeatingPlanId;
