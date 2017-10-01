@@ -1,5 +1,5 @@
 <?php
-    include 'app-Class/Autoloader.php';
+    include 'app-class/Autoloader.php';
 
     class Venue extends Location{
 
@@ -29,11 +29,11 @@
 
             $db = new DataAccess();
             
-            $temp = $db->returnQuery('select * from Venue v join Location l on v.local_id = l.local_id
+            $stmt = $db->returnQuery('select * from Venue v join Location l on v.local_id = l.local_id
                                 where v.name ="' . $a1 . '"');
 
             
-            $res = $temp->fetch(PDO::FETCH_ASSOC);
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $this->venueId = $res['venue_id'];
             $this->name = $res['name'];
@@ -52,15 +52,35 @@
             
         }
 
-        function __construct7($a1,$a2,$a3,$a4,$a5,$a6,$a7){
+        function __construct8($a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8){
+
+            $db = new DataAccess();
+
+            $stmt = $db->returnQuery('select * from Seating_Profile where seating_prof_id = '. $a5);
+
+            $prof = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $this->venueId = $a1;
             $this->name = $a2;
             $this->groupLocal = $a3;
             $this->type = $a4;
-            $this->capacit = $a5;
-            $this->seatingProf = $a6;
-            $this->rating = $a7;
+            $this->seatingProf = new SeatingProfile($prof['seating_prof_id'],
+                                                    $prof['multi_room'],
+                                                    $prof['style']);
+            $this->rating = $a6;
+            $this->capacit = $a7;
+            $this->localId = $a8;
+            
+            $stmt = $db->returnQuery('select * from Location where local_id = ' . $a8);
+
+            $temp = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $this->addLine1 = $temp['add_line_1'];
+            $this->addLine2 = $temp['add_line_2'];
+            $this->addLine3 = $temp['add_line_3'];
+            $this->addLine4 = $temp['add_line_4'];
+            $this->cityTown = $temp['city_town'];
+            $this->postcode = $temp['postcode'];
 
         }
 
@@ -109,7 +129,7 @@
         function setName($Name){
             $this->name = $Name;
         }
-        function setGroupLocal ($GroupLocal){
+        function setGroupLocal($GroupLocal){
             $this->groupLocal = $GroupLocal;
         }
         function setType ($Type){
@@ -118,7 +138,7 @@
         function setCapacity($Capacity){
             $this->capacity = $Capacity;
         }
-        function setSeatingProf ($SeatingProf){
+        function setSeatingProf($SeatingProf){
             $this->seatingProf = $SeatingProf;
         }
         function setRating($Rating){
@@ -132,7 +152,7 @@
             return $this->name;
         }
 
-        function getGroupLocal (){
+        function getGroupLocal(){
             return $this->groupLocal;
         }
         function getType(){

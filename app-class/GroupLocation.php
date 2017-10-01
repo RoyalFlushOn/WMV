@@ -34,9 +34,9 @@
 			}
 		}
 
-		function venuesFromGrpLocation($grploc){
+		function venueList($grploc){
 			$db = new DataAccess();
-			$stmt = $db->returnQuery('select vn.venue_id, vn.name, grl.location, vn.rating, spr.style from Venue vn join Group_Location grl on vn.group_local_id = grl.group_local_id join Seating_Profile spr on vn.seating_prof_id = spr.seating_prof_id where grl.location = "' . $grploc . '"');
+			$stmt = $db->returnQuery('select vn.venue_id, vn.name, vn.local_id, vn.capacity, grl.location, vn.rating, spr.style, vn.seating_prof_id from Venue vn join Group_Location grl on vn.group_local_id = grl.group_local_id join Seating_Profile spr on vn.seating_prof_id = spr.seating_prof_id where grl.location like "' . $grploc . '"');
 
 			if($stmt->execute()){
 				return $stmt;

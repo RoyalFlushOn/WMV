@@ -1,31 +1,32 @@
 <?php 
     include 'app-class/Autoloader.php';
 
-   
-
     if(!empty($_GET['srchVal'])){
-         $grpLocation = $_GET['srchVal'];
+        $grpLocation = $_GET['srchVal'];
 
-         $grpLoc = new GroupLocation();
-         $temp = $grpLoc->venuesFromGrpLocation($grpLocation);
+        $grpLoc = new GroupLocation();
+        $temp = $grpLoc->venueList($grpLocation);
 
         $res = $temp->fetchall(PDO::FETCH_ASSOC);
+       
+       // print_r($res);
 
-        $seatPlan = new SeatingPlan();
-        
         foreach($res as $ven){
-         
-            $temp = $seatPlan->seatingPlansFromVenue($ven['venue_id']);
-            $rooms[$ven['venue_id']] = $temp->fetchall(PDO::FETCH_ASSOC);
-        }
 
-    } else {
-        header( 'location: localhost:8888/WMV/');
-    }
+            $venue = new Venue($ven['venue_id'],
+                                $ven['name'],
+                                $ven['location'],
+                                $ven['style'],
+                                $ven['seating_prof_id'],
+                                $ven['rating'],
+                                $ven['capacity'],
+                                $ven['local_id']);
+            $VenRes[$ven['venue_id']] = $venue;
+       }
 
-    
-   
-    print_r($rooms);
+   } else {
+       header( 'location: localhost:8888/WMV/');
+   }
 
 
     /*
@@ -51,19 +52,28 @@
             <table>   
                 <?php
 
-                    $line = '';
-                    foreach($res as $ven){
-                        $line =  '<tr><td>';
-                        $line += $ven['name'] . '</td><td>' . $ven['location'] . '</td><td>' . $ven['rating'] . '</td><td>' . $ven['style'] . '</td>';
+                    $line = '<tr><td>Venue</td>';
+                    $line .= '<td>Loaction</td>';
+                    $line .= '<td>Type</td>';
+                    $line .= '<td>Rating</td>';
+                    $line .= '<td>Room/Section</td>';
+                    $line .= '<td>Room/Section</td>';
+                    $line .= '<td>Room/Section</td>';
+                    $line .= '</tr>';
 
-                        $temp = $room[$ven['venue_id']];
+                    foreach($VenRes as $venue){
+                        $line .= '<tr><td><a href="' . $_SERVER . '/' . $venue->getVenueId(). '">' . $venue->getName(). '</a></td>';
+                        $line .= '<td>' . $venue->getGroupLocal(). '</td>';
+                        $line .= '<td>' . $venue->getType() . '</td>';
+                        $line .= '<td>' . $venue->getRating() . '</td>';                    
 
-                        foreach($temp as $room){
-                            foreach($room as $name){
-                                $line +=  '<td>' . $name['name'] . '</td>';
-                            }
+                        $prof = $venue->getSeatingProf();
+                        foreach($prof->getSeatingPlan() as $plan ){
+                            
+                            $line .= '<td><button id="'. $plan->getSeatingPlanId() .'">' . $plan->getName() .'</button></td>';
                         }
-                        $line += '</tr>';
+
+                        $line .= '</tr>';
                     }
 
                     echo $line;

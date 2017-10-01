@@ -4,7 +4,8 @@
     class SeatingPlan{
 
         private $seatingPlanId;
-	    private $seating;
+        private $name;
+	    private $seating = array();
 
         function __construct(){
             $a = func_get_args();
@@ -19,6 +20,57 @@
 		{
 			//default contructor
         }
+
+        function __construct2($a1,$a2){
+            
+
+            $this->seatingPlanId = $a1;
+            $this->name = $a2;
+
+            $db = new DataAccess();
+			
+            $stmt = $db->returnQuery('select * from Seating where seating_plan_id = ' . $a1);
+
+            $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach($seats as $seat){
+
+                $st = New Seat($seat['seating_id'], 
+                                    $seat['seat_name'], 
+                                    $seat['rating'],
+                                    $seat['image_path']);
+                $this->seating[] = $st;
+            }
+            // $this->seating = retriveSeats($a1);
+
+            
+        }
+
+        // function __construct3()
+		// {
+		// 	//default contructor
+        // }
+
+        // function retriveSeats($id){
+
+        //     $temp = array();
+        //     $db = new DataAccess();
+			
+        //     $stmt = $db->returnQuery('select * from Seating where seating_plan_id = ' . $id);
+
+        //     $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //     foreach($seats as $seat){
+
+        //         $st = New Seat($seat['seating_id'], 
+        //                             $seat['seat_name'], 
+        //                             $seat['rating'],
+        //                             $seat['image_path']);
+        //         $temp[] = $st;
+        //     }
+
+        //     return $temp;
+        // }
         
         function seatingPlansFromVenue($id){
             $db = new DataAccess();
@@ -35,12 +87,18 @@
         function setSeatingPlanId($SeatingPlanId){
             $this->seatingPlanId = $SeatingPlanId;
         }
+        function setName($Name){
+            $this->name = $Name;
+        }
         function setSeating($Seating){
             $this->seating = $Seating;
         }
 
         function getSeatingPlanId(){
             return $this->seatingPlanId;
+        }
+        function getName(){
+            return $this->name;
         }
         function getSeating(){
             return $this->seating;

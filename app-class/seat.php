@@ -4,7 +4,6 @@
         
         private $seatingId;
         private $seatName;
-        private $room;
         private $rating;
         private $imagePath;
 
@@ -20,7 +19,15 @@
 		function __construct0()
 		{
 			//default contructor
-		}
+        }
+        
+        function __construct4($a1,$a2,$a3,$a4){
+
+            $this->seatingId = $a1;
+            $this->seatName = $a2;
+            $this->rating = $a3;
+            $this->imagePath = $a4;
+        }
 
         function setSeatingId($SeatingId){
             $this->seatingId = $SeatingId;
