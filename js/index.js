@@ -15,19 +15,40 @@ var grpLoc;
 var venue;
 var dbVenue = false;
 
-$('#locSrchBtn').hide();
+$('#signInIcon').popup({
+    position : 'bottom right',
+    on : 'hover',
+    content : 'Sign in',
+    variation: 'tiny'
+});
 
-$('#venueTxtBx').search({
+$('#regIcon').popup({
+    position : 'bottom right',
+    on : 'hover',
+    content : 'Register',
+    variation: 'tiny'
+});
+
+/**
+ * links search bar to api content
+*/
+$('.ui.search').search({
     apiSettings: {
-        url: './services/venue-rest.php?ven={query}'
+        url: 'services/venue-rest.php?ven={query}'
     },
-    type : 'category',
+    fields:{
+        results: 'venues',
+        title: 'venue'
+    },
     minCharacters: 3
 });
 
-// $('#venueTxtBx').on('autocompleteselect', function(){
-//     dbVenue = true;
-// });
+/**
+ * Intilizes dropdown menu
+ */
+$('.dropdown').dropdown({
+    direction : 'left'
+});
 
 $('#venueSrchBtn').on('click', function(){
     venue = $('#venueTxtBx').val();
