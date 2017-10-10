@@ -27,7 +27,7 @@
 
 			$stmt = $dt->returnQuery('select location from Group_Location order by location');
 			
-			if($stmt->execute()){
+			if($stmt){
 				return $stmt;
 			} else {
 				return false;

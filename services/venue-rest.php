@@ -1,25 +1,19 @@
 <?php
 
-    $serverName = 'localhost';
-    $username = 'root';
-    $password = 'root';
-    
-            
-            try{
-                $dbConn = new PDO("mysql:host=$serverName;dbname=WMV", $username, $password);
-                $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                
-            }
-            catch (PDOException $e){
-                // return 'woops: ' . $e->getMessage();
-            }
+    include '../app-class/Autoloader.php';
+
+    // $responce = array();
     
 
     if(!empty($_GET['ven'])){
 
+        $responce['venues'] = array();
+
+        $db = new DataAccess();
+
         $venue = $_GET['ven'];
 
-        $stmt = $dbConn->prepare('select name from Venue where name like "%' . $venue . '%" order by name;');
+        $stmt = $db->returnQuery('select name from Venue where name like "%' . $venue . '%" order by name');
         
         // if($stmt->execute()){
         //     $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -29,28 +23,24 @@
         //     echo 'Unknown';
         // }
 
-        if($stmt->execute()){
-
-            // while($row = $stmt->fetch()){
-            //     $res = $row['name'];
-            // }
-
+        if($stmt){
             $res = $stmt->fetchall(PDO::FETCH_ASSOC);
             
+            foreach($res as $val){
+
+                array_push($responce['venues'], array("venue" => $val['name']));
+            }
+
+            echo json_encode($responce);
+
         } else {
             echo 'Error';
         }
 
-        //  print_r(json_encode($res)); //testing
-        exit(json_encode($res));
+         //var_dump(json_encode($responce)); //testing
+       
 
-        // $ven = new $Venue();
-
-        // $res = $ven->searchVenue($venue);
-
-        // if($res != null){
-        //     echo json_encode($res);
-        // }  
+          
 
           
     }
