@@ -39,10 +39,36 @@
 		  "text": "View all 202 results"
 		}
 	  }';
+	echo "</br>";
+	echo $_SERVER['HTTP_HOST'];
+	echo "</br>";
+	echo $_SERVER['DOCUMENT_ROOT'];
+	echo "</br>";
+	echo $_SERVER['SERVER_NAME'];
+	echo "</br>";
+	echo $_SERVER['SERVER_ADDRESS'];
+	echo "</br>";
+	// $db = new DataAccess();
 
-	  $json_de = json_decode($json);
+	// $passes[] = 'update Users set password = "' . password_hash('pass1', PASSWORD_DEFAULT) . '" where username = "userName1"';
+	// $passes[] = 'update Users set password = "' . password_hash('pass2', PASSWORD_DEFAULT) . '" where username = "userName2"';
+	// $passes[] = 'update Users set password = "' . password_hash('pass3', PASSWORD_DEFAULT) . '" where username = "userName3"';
+	// $passes[] = 'update Users set password = "' . password_hash('pass4', PASSWORD_DEFAULT) . '" where username = "userName4"';
+	// $passes[] = 'update Users set password = "' . password_hash('pass5', PASSWORD_DEFAULT) . '" where username = "userName5"';
 
-	  var_dump($json_de);
+	// $db->transaction($passes);
+
+	$myObj->a = 1;
+	$myObj->b = 2;
+
+	$enJ = json_encode($myObj);
+	$temp = json_decode($enJ);;
+
+	echo $temp->a;
+	echo "</br>";
+	echo $temp->{'b'};
+
+
 	
 	?>
 

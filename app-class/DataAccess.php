@@ -87,10 +87,9 @@
             $this->dbConn->beginTransaction();
             
             foreach($querys as $query){
-                $this->dbConn->prepare($query);
+               $stmt = $this->dbConn->prepare($query);
+               $stmt->execute();
             }
-             
-            $stmt = $this->dbConn->execute();
             
             if($stmt){
                 $this->dbConn->commit();

@@ -1,4 +1,5 @@
 <?php
+    include 'app-class/Autoloader.php';
 
     class User{
 
@@ -22,7 +23,40 @@
 		function __construct0()
 		{
 			//default contructor
-		}
+        }
+        
+        /*
+            checking users exists against the database.
+        */
+        function chkUser($userNmIn){
+            $db = new DataAccess();
+
+            $stmt = $db->returnQuery('select username from Users where username = "' . $userNmIn. '"');
+
+            if(!empty($stmt->fetch())){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        /*
+            Checking password against the database.
+        */
+        function chkPass($passWrdIn, $userNmIn){
+            $db = new DataAccess();
+
+            $stmt = $db->returnQuery('select password from Users where username = "' . $userNmIn. '"');
+            
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if(password_verify($passWrdIn, $res['password'])){
+                return true;
+            } else {
+               return false; 
+            }
+            
+        }
 
         function setUserId($UserId){
             $this->userId = $UserId;
