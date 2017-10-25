@@ -54,6 +54,9 @@
         $usrbtn = '<script> userBtnConfig(false) </script>';
     }
     
+    /*
+        Redirection to this page containing a message.
+    */
     if(isset($_SESSION['message'])){
         $tmp = $_SESSION['message'];
 
@@ -206,7 +209,7 @@
                 <?php echo $msgContent; ?>
                 <div class="ui grid">
                     <!-- logo -->
-                    <div class="sixteen">
+                    <div class="sixteen wide column">
                         <img class="ui fluid image" src="./assets/images/index/wmv-logo-placeholder.png">
                     </div>
                     <div class="eight wide column">

@@ -122,6 +122,9 @@
             return $res = $temp->fetchall();
         }
 
+        function toJson(){
+            
+        }
 
         function setVenueId ($VenueId){
             $this->venueId = $VenueId;

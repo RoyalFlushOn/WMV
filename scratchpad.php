@@ -5,10 +5,10 @@
   <title>Demo</title>
   <!-- <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />  -->
   <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
-        crossorigin="anonymous"></script>
-        <script src="semantic/dist/semantic.min.js"></script>
+	<script   src="https://code.jquery.com/jquery-3.2.1.min.js"   
+	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   
+	crossorigin="anonymous"></script>
+	<script src="semantic/dist/semantic.min.js"></script>
 </head>
 <body> 
 
@@ -16,61 +16,89 @@
 		<p><label>Country:</label><input type='text' name='country' value='' class='auto'></p>
 	</form> -->
 
-	<?php
+	<?php session_start();
 	include 'app-class/Autoloader.php';
+	
+	$seatPlan->planid = 40001;
+	$seatPlan->seatid = 50003;
+	$seatPlan->venueid = 'Venue 1';
 
-	$json = '{
-		"results": [
-		  {
-			"title": "Result Title",
-			"url": "/optional/url/on/click",
-			"image": "optional-image.jpg",
-			"price": "Optional Price",
-			"description": "Optional Description"
-		  },
-		  {
-			"title": "Result Title",
-			"description": "Result Description"
-		  }
-		],
-		// optional action below results
-		"action": {
-		  "url": "/path/to/results",
-		  "text": "View all 202 results"
-		}
-	  }';
-	echo "</br>";
-	echo $_SERVER['HTTP_HOST'];
-	echo "</br>";
-	echo $_SERVER['DOCUMENT_ROOT'];
-	echo "</br>";
-	echo $_SERVER['SERVER_NAME'];
-	echo "</br>";
-	echo $_SERVER['SERVER_ADDRESS'];
-	echo "</br>";
-	// $db = new DataAccess();
+	$_SESSION['seatplan'] = json_encode($seatPlan);
 
-	// $passes[] = 'update Users set password = "' . password_hash('pass1', PASSWORD_DEFAULT) . '" where username = "userName1"';
-	// $passes[] = 'update Users set password = "' . password_hash('pass2', PASSWORD_DEFAULT) . '" where username = "userName2"';
-	// $passes[] = 'update Users set password = "' . password_hash('pass3', PASSWORD_DEFAULT) . '" where username = "userName3"';
-	// $passes[] = 'update Users set password = "' . password_hash('pass4', PASSWORD_DEFAULT) . '" where username = "userName4"';
-	// $passes[] = 'update Users set password = "' . password_hash('pass5', PASSWORD_DEFAULT) . '" where username = "userName5"';
-
-	// $db->transaction($passes);
-
-	$myObj->a = 1;
-	$myObj->b = 2;
-
-	$enJ = json_encode($myObj);
-	$temp = json_decode($enJ);;
-
-	echo $temp->a;
-	echo "</br>";
-	echo $temp->{'b'};
-
+	var_dump($_SESSION['seatplan']);
 
 	
+
+	// $seatingPlan = new SeatingPlan(40001);
+
+	//  $seats = $seatingPlan->getSeating();
+
+	//  $temp = array_keys($seats);
+
+	//  $table = '<table>';
+	//  $i = 0;
+	//  foreach($seats as $key => $seat){
+	// 	 if($i == 0){
+	// 		 $row = substr($seat->getSeatName(),0,1);
+	// 		 echo $row;
+	// 	 }
+
+	// 	 if(strcmp(substr($seat->getSeatName(),0,1), $row) == 0){
+	// 		 if($i == 0){
+	// 			 $table .= '<tr><td><i class="vertically flipped bordered big archive icon" onclick="seatViewChng(this)" id="' .$seat->getSeatingId() . '"></i></td>'; 
+	// 			 $i++;
+	// 		 } else if($i > 0){
+	// 			 $table .= '<td><i class="vertically flipped bordered big archive icon" onclick="seatViewChng(this)" id="' .$seat->getSeatingId() . '"></i></td>';
+	// 			 $i++;
+	// 		 }
+	// 	 } else {
+	// 		 if($i > 0){
+	// 			 $table .= '</tr><tr><td><i class="vertically flipped bordered big archive icon" onclick="seatViewChng(this)" id="' .$seat->getSeatingId() . '"></i></td>';
+	// 			 $i = 1;
+	// 			 $row = substr($seat->getSeatName(),0,1);
+	// 			 echo "</br>" . $row;
+	// 		 }
+	// 	 }
+		 
+	//  }
+
+	//  $table .= '</tr><table>';
+
+	//  echo $table;
+
+	//echo strcmp('A1', 'B3');
+
+		// $btns = '<div class="ui buttons">';
+		// for($i=0; $i<= 5; $i++){
+		// 	$btns .= '<button class="ui button" onclick="test(this)" id="btn'. $i .'">'. $i .'</button>';
+		// }
+		// $btns .= '</div>';
+
+		
 	?>
+
+<!-- <div class="ui tiny modal" id="signInMdl">
+		<i class="close icon"></i>
+		<div class="header">
+				Test
+		</div>
+		<div class="content">
+				<p id="res"></p>
+		</div>
+</div> -->
+	
+	<script>
+		// function test(e){
+
+		// 	$('#res').text(e.id);
+		// 	$('#signInMdl').modal(
+		// 			'show'
+		// 	);
+		// }
+	</script>
+
+			<img class="ui fluid image" scr="./assets/image/test/screen-1/50001.jpg">
+	</br>
 
 <div class="ui search">
   <div class="ui icon input">

@@ -23,6 +23,8 @@
                                 $ven['local_id']);
             $VenRes[$ven['venue_id']] = $venue;
        }
+       
+       //print_r($VenRes);
 
    } else {
        header( 'location: localhost:8888/WMV/');
