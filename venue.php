@@ -30,7 +30,7 @@
                 $_SESSION['message'] = json_encode($msg);
 
                 echo '<script>
-                            location.href = "http://localhost:8888/WMV";
+                            location.href = ".";
                     </script>';
             }
         }

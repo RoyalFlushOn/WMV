@@ -21,27 +21,28 @@
 			//default contructor
         }
 
+        function __construct1($a1){
+            
+            $temp = array();
+            $db = new DataAccess();
+			
+            $stmt = $db->returnQuery('select name from Seating_Plans where seating_plan_id = ' . $a1);
+
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $this->seatingPlanId = $a1;
+            $this->name = $res['name'];
+            $this->seating = $this->retriveSeats($a1);
+
+            
+        }
+
         function __construct2($a1,$a2){
             
 
             $this->seatingPlanId = $a1;
             $this->name = $a2;
-
-            $db = new DataAccess();
-			
-            $stmt = $db->returnQuery('select * from Seating where seating_plan_id = ' . $a1);
-
-            $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            foreach($seats as $seat){
-
-                $st = New Seat($seat['seating_id'], 
-                                    $seat['seat_name'], 
-                                    $seat['rating'],
-                                    $seat['image_path']);
-                $this->seating[] = $st;
-            }
-            // $this->seating = retriveSeats($a1);
+            $this->seating = $this->retriveSeats($a1);
 
             
         }
@@ -51,37 +52,25 @@
 		// 	//default contructor
         // }
 
-        // function retriveSeats($id){
+        function retriveSeats($id){
 
-        //     $temp = array();
-        //     $db = new DataAccess();
-			
-        //     $stmt = $db->returnQuery('select * from Seating where seating_plan_id = ' . $id);
-
-        //     $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        //     foreach($seats as $seat){
-
-        //         $st = New Seat($seat['seating_id'], 
-        //                             $seat['seat_name'], 
-        //                             $seat['rating'],
-        //                             $seat['image_path']);
-        //         $temp[] = $st;
-        //     }
-
-        //     return $temp;
-        // }
-        
-        function seatingPlansFromVenue($id){
+            $temp = array();
             $db = new DataAccess();
 			
-            $stmt = $db->returnQuery('select spl.seating_plan_id, spl.name from Seating_Plans spl inner join Venue v on spl.seating_prof_id = v.seating_prof_id where v.venue_id = ' . $id);
-            
-            if($stmt->execute()){
-                return $stmt;
-            } else {
-                return false;
+            $stmt = $db->returnQuery('select * from Seating where seating_plan_id = ' . $id);
+
+            $seats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach($seats as $seat){
+
+                $st = New Seat($seat['seating_id'], 
+                                    $seat['seat_name'], 
+                                    $seat['rating'],
+                                    $seat['image_path']);
+                $temp[$seat['seating_id']] = $st;
             }
+
+            return $temp;
         }
 
         function setSeatingPlanId($SeatingPlanId){
