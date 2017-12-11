@@ -36,14 +36,15 @@ $('#sidebarCls').on('click', function(){
   /**
  * User buttons based on login status
  */
-function userBtnConfig(status){
-    if(status){
-        $('#signInIcon').hide();
-        $('#regIcon').hide();
-        $('#signOutIcon').show();
-    } else {
-        $('#signInIcon').show();
-        $('#regIcon').show();
-        $('#signOutIcon').hide();
-    }
-}
+// function userBtnConfig(status){
+//     if(status){
+//         $('#signInIcon').hide();
+//         $('#regIcon').hide();
+//         $('#signOutIcon').show();
+//     } else {
+//         $('#signInIcon').show();
+//         $('#regIcon').show();
+//         $('#signOutIcon').hide();
+//     }
+// }
+

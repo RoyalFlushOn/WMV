@@ -308,5 +308,6 @@
     </body>  
         <!-- Custom page scripts for various features -->
         <script src="./js/index.js"></script> 
+        <script src="./js/user-access.js"></script>
         <?php echo $usrbtn; ?>    
 </html>
