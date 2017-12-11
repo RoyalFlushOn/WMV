@@ -127,13 +127,58 @@
             <div class="twelve wide column">
             </div>
         </div>
-        <div class="ui grid">
-            <div class="ui menu">>
-            
-            </div>
-        </div>
-    </body>
+        <div class="ui grid centered">
+            <?php 
+                $seatProf = $venue->getSeatingProf();
+                $seatingPlan = $seatProf->getSeatingPlan();
 
+                switch($seatProf->getStyle()){
+
+                    case 'Cinema':
+                        cinemaLayout($seatingPlan);
+                    break;
+                    case 'Theater':
+                        theaterLayout($seatingPlan);
+                    break;
+                    case 'Style1'://testing cinema
+                        echo cinemaLayout($seatingPlan, $venue->getName());
+                    break;
+                    case 'Style3'://testing theater
+                        echo theaterLayout($seatingPlan);
+                    break;
+                }
+
+                function cinemaLayout($seatPlan, $name){
+                    $i=0;
+                    $layout = '<div class="row">';
+                    
+                    foreach($seatPlan as $plan){
+                        if($i == 3){
+                            $layout .= '</div><div class="row">';
+                            $i = 0;
+                        }
+
+                        $layout .= '<div class="three column wide">
+                                        <button class="ui button" onclick="myView(this, &quot;' . $name. '&quot;)" id="'.
+                                                $plan->getSeatingPlanId() .'">' . $plan->getName(). '</button>
+                                    </div>';
+                        $i++;
+                    }
+                    
+                    $layout .= '</div>';
+
+                    return $layout;
+                }
+
+                function theaterLayout($seatPlan){
+
+
+                }
+            ?>
+        </div>
+        <p id="test"></p>
+    </body>
+    <script src="./js/venue.js"></script>
 </html>
 
 <ul>

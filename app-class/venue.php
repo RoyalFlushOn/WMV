@@ -29,8 +29,8 @@
 
             $db = new DataAccess();
             
-            $stmt = $db->returnQuery('select * from Venue v join Location l on v.local_id = l.local_id
-                                where v.name ="' . $a1 . '"');
+            $stmt = $db->returnQuery('select v.*, l.*, sp.multi_room, sp.style from Venue v join Location l on v.local_id = l.local_id 
+                                        join Seating_Profile sp on sp.seating_prof_id = v.seating_prof_id where v.name ="' . $a1 . '"');
 
             
             $res = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -40,7 +40,10 @@
             $this->groupLocal = $res['group_local_id'];
             $this->type = $res['type'];
             $this->capacit = $res['capacity'];
-            $this->seatingProf = $res['seating_prof_id'];
+            $this->seatingProf = new SeatingProfile($res['seating_prof_id'],
+                                                    $res['multi_room'],
+                                                    $res['style']
+                                                    );
             $this->rating = $res['rating'];
             $this->localId = $res['local_id'];
             $this->addLine1 = $res['add_line_1'];

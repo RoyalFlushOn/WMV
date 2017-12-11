@@ -97,7 +97,7 @@ $('.dropdown').dropdown({
     action: function(text, value){
         // $('#test').text(window.location.href + 'results.php?srchVal=' + text);
 
-        location.href = window.location.href + 'results.php?srchVal=' + text;
+        location.href = 'results.php?srchVal=' + text;
         
     }
 });

@@ -3,7 +3,6 @@
 
     include 'app-class/Autoloader.php';
 
-    $initalSeat = array();
 
     if(isset($_SESSION['seatplan'])){
         
@@ -127,7 +126,7 @@
                     
                     <!-- navigation links -->
                     <a class="item" id="HmLnk">Home</a>
-                    <a href="venue.php?venue=<?php echo $seatPlan->venueid;?>" class="item" id="VenPgLnk">Venue Page</a>
+                    <a href="venue.php?venue=<?php echo $seatPlan->venueName;?>" class="item" id="VenPgLnk">Venue Page</a>
                     <div class="menu" id="spacer">
                         <div class="item"></div>
                         <div class="item"></div>
