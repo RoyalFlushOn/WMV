@@ -125,7 +125,7 @@
                     </div>
                     
                     <!-- navigation links -->
-                    <a class="item" id="HmLnk">Home</a>
+                    <a class="item" id="HmLnk" href=".">Home</a>
                     <a href="venue.php?venue=<?php echo $seatPlan->venueName;?>" class="item" id="VenPgLnk">Venue Page</a>
                     <div class="menu" id="spacer">
                         <div class="item"></div>
