@@ -118,13 +118,39 @@
                         <div class="item"></div>
                     </div>
                     <!-- navigation links -->
-                    <a id="aboutlnk" class="item">about Us</a>
-                    <a id="contactlnk" class="item">contact Us</a>
+                    <a id="aboutLnk" class="item">about Us</a>
+                    <a id="contactLnk" class="item">contact Us</a>
                     <a id="suggestLnk" class="item">suggest Venue</a>
                 </div>
             </div>
              <!-- page content -->  
             <div class="twelve wide column">
+                <!-- image for venue -->
+                <div class="ui grid">
+                    <div class="eight wide column central">
+                        <div class="ui big lable" id="venueLbl"> 
+                            <?php echo $venue->getName(); ?>
+                        </div>
+                        <img src="./assets/images/venue/venue-logo-placeholder.png" alt="" class="ui fluid image">
+                    </div>
+                    <div class="ui row">
+                        <div class="ui relaxed divided list">
+                            <div class="item">
+                                <div class="conent">
+                                    <div class="header">Venue Type: </div>
+                                    <div class="description"><?php echo $venue->getType(); ?></div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="conent">
+                                    <div class="header">Venue Loction: </div>
+                                    <div class="description"><?php echo $venue->getCityTown(); ?></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- details beside in list form -->
             </div>
         </div>
         <div class="ui grid centered">
@@ -172,13 +198,15 @@
 
                 function theaterLayout($seatPlan){
 
-
+                    //logic for a button stack for each are
                 }
             ?>
         </div>
         <p id="test"></p>
     </body>
     <script src="./js/venue.js"></script>
+    <script src="./js/user-access.js"></script>
+    <?php echo $usrbtn; ?>  
 </html>
 
 <ul>

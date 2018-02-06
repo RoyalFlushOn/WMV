@@ -40,14 +40,14 @@ $('.dropdown').dropdown({
  * Three click events are keyed on id's and when ran the
  * navigate to the corrisponding page.
  */
-$('#aboutnk').on('click', function(){
-    location.href = window.location.href + 'about.php';
+$('#aboutlnk').on('click', function(){
+    location.href = 'about.php';
 })
 $('#contactlnk').on('click', function(){
-    location.href = window.location.href + 'contact.php';
+    location.href = 'contact.php';
 })
 $('#suggestLnk').on('click', function(){
-    location.href = window.location.href + 'suggestVenue.php';
+    location.href = 'suggestVenue.php';
 })
 
 
