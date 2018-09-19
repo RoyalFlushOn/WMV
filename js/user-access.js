@@ -13,6 +13,8 @@ function userBtnConfig(status){
    }
 }
 
+$('#signInErrorMsg').hide();
+
 /**
 * sign in and register buttons prompts
 */
@@ -49,6 +51,86 @@ $('#signInMdl').modal(
 $('#regIcon').on('click', function(){
     location.href = 'users/register.php';
 })
+
+/**
+ * logs user in
+ */
+function signIn(){
+
+    $('#signInFrm').form('validate form');
+
+    $('#signInFrm').form({
+        onSuccess : function(){
+            $.post(
+                'services/login.php',
+                {
+                    username : $('#userNm').val(),
+                    password : $('#passWrd').val()
+                },
+                function(data){
+                    if(data.signIn){
+                        userBtnConfig(true);
+                        message('success', 'Sign In Successful', 'You are now signed into your account');
+                        location.reload();
+                    } else {
+                        $('#signInErrorMsg').show();
+                    }
+                },
+                'json'
+            );
+        }
+    });
+    
+
+    // if($('#signInFrm').form('is valid')){
+    //     $.post(
+    //         'services/login.php',
+    //         {
+    //             username : $('#userNm').val(),
+    //             password : $('#passWrd').val()
+    //         },
+    //         function(data){
+    //             if(data.loggedOn){
+    //                 userBtnConfig(true);
+    //                 message('success', 'Sign In Successful', 'You are now signed into your account');
+    //                 location.reload();
+    //             } else {
+    //                 $('#signInErrorMsg').show();
+    //             }
+    //         }
+    //     );
+    // } else {
+
+    // }
+    
+}
+
+function onSuccess(event, fields){
+
+    $('#userNm').val() = 'cheese';
+}
+
+/**
+ * sets messages ready for display on index homepage
+ */
+
+function message(type, header, message){
+
+    $.post(
+        'service/message.php',
+        {
+            type : type,
+            header : header,
+            message : message
+        },
+        function(data){
+            if(!data.status){
+                console.log('message service error');
+            }
+        },
+        'json'
+    )
+}
 
 /**
  * trigger the signing out of a user.

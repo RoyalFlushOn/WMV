@@ -2,17 +2,17 @@
     session_start();
     include '../app-class/Autoloader.php';
 
-    // $responce = array();
+    $response = new Response();
     
 
     if(!empty($_POST['signOut'])){
 
         if(isset($_SESSION['user'])){
-            session_unset($_SESSION['user']);
+            unset($_SESSION['user']);
 
-            $responce->signout = true;
+            $response->signout = true;
 
-            echo json_encode($responce);
+            echo json_encode($response);
         }
   
     } else {

@@ -43,9 +43,10 @@
     <head>
         <!-- Semanitc requirements, including JQuery CDN -->
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-        <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   
+        <!-- <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
+        <script src="js/jquery-3.3.1.min.js"></script>
         <script src="semantic/dist/semantic.min.js"></script>
     </head> 
     <body>
@@ -153,6 +154,7 @@
                 <!-- details beside in list form -->
             </div>
         </div>
+        <!--  button grid -->
         <div class="ui grid centered">
             <?php 
                 $seatProf = $venue->getSeatingProf();
@@ -169,36 +171,50 @@
                     case 'Style1'://testing cinema
                         echo cinemaLayout($seatingPlan, $venue->getName());
                     break;
-                    case 'Style3'://testing theater
-                        echo theaterLayout($seatingPlan);
+                    case 'Style2'://testing theater
+                        echo theaterLayout($seatingPlan, $venue->getName());
                     break;
                 }
 
                 function cinemaLayout($seatPlan, $name){
                     $i=0;
-                    $layout = '<div class="row">';
+                    $layout = '<div class="row"><div class="ui buttons">';
                     
                     foreach($seatPlan as $plan){
                         if($i == 3){
-                            $layout .= '</div><div class="row">';
+                            $layout .= '</div></div><div class="row"><div class="ui buttons">';
                             $i = 0;
                         }
 
-                        $layout .= '<div class="three column wide">
-                                        <button class="ui button" onclick="myView(this, &quot;' . $name. '&quot;)" id="'.
-                                                $plan->getSeatingPlanId() .'">' . $plan->getName(). '</button>
-                                    </div>';
+                        // $layout .= '<div class="three column wide">
+                        //                 <button class="ui button" onclick="myView(this, &quot;' . $name. '&quot;)" id="'.
+                        //                         $plan->getSeatingPlanId() .'">' . $plan->getName(). '</button>
+                        //             </div>';
+
+                        $layout .= '<button class="ui button" onclick="myView(this, &quot;' . $name. '&quot;)" id="'.
+                                                $plan->getSeatingPlanId() .'">' . $plan->getName(). '</button>';
                         $i++;
                     }
                     
-                    $layout .= '</div>';
+                    $layout .= '</div></div>';
 
                     return $layout;
                 }
 
-                function theaterLayout($seatPlan){
+                function theaterLayout($seatPlan, $name){
 
-                    //logic for a button stack for each are
+                    $layout = '<div class="row">
+                                    <div class="ui vertical buttons">
+                                        <div class="five column wide">';
+
+                    foreach($seatPlan as $plan){
+                        $layout .= '<button class="fluid ui button" onclick="myView(this, &quot;'. $name . 
+                                            '&quot;)" id="'. $plan->getSeatingPlanId() . '"> ' . $plan->getName() . '</button>';
+                    }
+
+                    $layout .= '</div></div></div>';
+
+                    return $layout;
                 }
             ?>
         </div>

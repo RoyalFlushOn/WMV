@@ -13,7 +13,7 @@
         $initalSeat =initialSeat($seatingPlan, $seatPlan->seatid);
     } else {
 
-        $jObj->type = ' info ';
+        $jObj->type = ' info';
         $jObj->header = 'Page Access Direct';
         $jObj->message = 'Page <b>myView.php</b> was not intended to access direct at this time, please try via a venue or location search.
                             If persists please contact site admin on -admin email-';
@@ -67,10 +67,10 @@
     <head>
         <!-- Semanitc requirements, including JQuery CDN -->
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-        <!-- <script src="js/jquery-3.1.js"></script> -->
-        <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <!-- <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
         <script src="semantic/dist/semantic.min.js"></script>
         
     </head> 

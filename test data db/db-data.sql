@@ -23,15 +23,20 @@ INSERT INTO Seating_Plans (`seating_plan_id`, `name`, `seating_prof_id`) VALUES
 (40001, 'Screen 1', 30001),
 (40002, 'Screen 2', 30001),
 (40003, 'Screen 3', 30001),
-(40004, 'Section 1', 30001),
-(40005, 'Section 2', 30001);
+(40004, 'Section 1', 30002),
+(40005, 'Section 2', 30002);
 
 INSERT INTO Seating (`seating_id`, `seat_name`, `rating`,`image_path`, `seating_plan_id`) VALUES
 (50001, 'A1', '1', 'path/50001.png', 40001),
 (50002, 'A2', '2', 'path/50002.png', 40001),
 (50003, 'A3', '3', 'path/50003.png', 40001),
 (50004, 'B1', '4', 'path/50004.png', 40003),
-(50005, 'B2', '5', 'path/50005.png', 40003);
+(50005, 'B2', '5', 'path/50005.png', 40003),
+(50006, 'C1', '1', 'path/50001.png', 40004),
+(50007, 'C2', '2', 'path/50002.png', 40004),
+(50008, 'C3', '3', 'path/50003.png', 40004),
+(50009, 'E1', '4', 'path/50004.png', 40005),
+(50010, 'E2', '5', 'path/50005.png', 40005);
 
 
 INSERT INTO `Venue` (`venue_id`, `name`, `local_id`, `group_local_id`, `type`, `capacity`, `seating_prof_id`, `rating`) VALUES 

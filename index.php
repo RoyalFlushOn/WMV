@@ -4,40 +4,6 @@
     $msgContent = $locList = '';
 
     /*
-        Sign in form logic
-    */
-    if($_SERVER['REQUEST_METHOD'] == "POST"){
-        if(!empty($_POST['userNm'])){
-            $userNm = $_POST['userNm'];
-
-            if(!empty($_POST['passWrd'])){
-                $user = new User();
-
-                $passWrd = $_POST['passWrd'];
-
-                if($user->chkUser($userNm)){
-                    if($user->chkPass($passWrd, $userNm)){
-                        //setting user values for sessions
-                        $userStat->username = $userNm;
-                        $userStat->signIn = true;
-
-                        $_SESSION['user'] = json_encode($userStat);
-                        
-                    } else {
-                        $msgContent = msg(' warning ', 'Signing in Problem!', 'Email or password no recognised! Please check and try again.');
-                    }
-                }else {
-                    $msgContent = msg(' warning ', 'Signing in Problem!', 'Email or password no recognised! Please check and try again.');
-                }
-            } else {
-                $msgContent = msg(' info ', 'Signing in Error!', 'Please try again. If error persists please contact admin.');
-            }
-        } else {
-            $msgContent = msg(' info ', 'Signing in Error!', 'Please try again. If error persists please contact admin.');
-        }
-    }
-
-    /*
         user buttons configuration based on the users sign in status.
     */
     if(isset($_SESSION['user'])){
@@ -58,16 +24,11 @@
         Redirection to this page containing a message.
     */
     if(isset($_SESSION['message'])){
-        $tmp = $_SESSION['message'];
 
-        $msg = json_decode($tmp);
+        $msg = json_decode($_SESSION['message']);
 
-        if($msg->msgFlag){
-            // $message = '<div class="alert alert-' . $msg->type . '"><strong>Msg!</strong> ' . $msg->message .'</div>';
-            $msgContent = msg($msg->type, $msg->header ,$msg->message);
-            $msg->msgFlag = false;
-            session_unset($_SESSION['message']);
-        }
+        $msgContent = msg($msg->type, $msg->header ,$msg->message);
+        unset($_SESSION['message']);
         
     }
 
@@ -89,10 +50,11 @@
     <head>
         <!-- Semanitc requirements, including JQuery CDN -->
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-        <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   
+        <!-- <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   
-        crossorigin="anonymous"></script>
-        <script src="semantic/dist/semantic.min.js"></script>
+        crossorigin="anonymous"></script> -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="semantic/dist/semantic.js"></script>
     </head> 
 
     <body>
@@ -116,8 +78,7 @@
                                 Sign In
                             </div>
                             <div class="content">
-                                <form class="ui form" id="signInFrm" method="post"
-                                    action="<? echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+                                <form class="ui form error" id="signInFrm">
                                     <div class="field">
                                         <label>User Id</label>
                                         <input type="text" id="userNm" name="userNm">
@@ -126,8 +87,14 @@
                                         <label>Password</label>
                                         <input type="password" id="passWrd" name="passWrd">
                                     </div>
+                                    <div class="ui error message" id="signInErrorMsg">
+                                        <div class="header">Sign in Failure</div>
+                                        <p> Sorry either the Username or the Password, you entered is incorrent.
+                                             Please try again, if it proceeds please contact support.
+                                        </p>
+                                    </div>
                                     <div class="field">
-                                        <button class="ui button" type="submit">Submit</button>
+                                        <button class="ui button" type="button" onClick="signIn()">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -213,7 +180,7 @@
                         <img class="ui fluid image" src="./assets/images/index/wmv-logo-placeholder.png">
                     </div>
                     <div class="eight wide column">
-                        new feed
+                        news feed
                     
                     </div>
                     <!-- social media -->
@@ -221,7 +188,7 @@
                         <!-- facebook -->
                         <div class="row">
                             <div id="fb-root"></div>
-                            <script>(function(d, s, id) {
+                            <!-- <script>(function(d, s, id) {
                                 var js, fjs = d.getElementsByTagName(s)[0];
                                 if (d.getElementById(id)) return;
                                 js = d.createElement(s); js.id = id;
@@ -234,9 +201,9 @@
                             <div class="fb-like" data-href="https://www.facebook.com/royalflush.online" 
                                     data-layout="button_count" data-action="like" 
                                     data-size="small" data-show-faces="false" data-share="true"
-                                    data-colorscheme="dark"></div>
+                                    data-colorscheme="dark"></div> -->
                             <!-- offline testing -->
-                            <!-- <button class="medium ui facebook button">
+                            <button class="medium ui facebook button">
                                 <i class="facebook icon"></i>
                                 follow
                             </button>
@@ -247,25 +214,25 @@
                             <button class="medium ui facebook button">
                                 <i class="facebook icon"></i>
                                 share
-                            </button> -->
+                            </button>
                         </div>
                         <!-- twitter -->
                         <div class="row">
-                        <a href="https://twitter.com/RoyalFlushOn_?ref_src=twsrc%5Etfw" class="twitter-follow-button" 
+                        <!-- <a href="https://twitter.com/RoyalFlushOn_?ref_src=twsrc%5Etfw" class="twitter-follow-button" 
                             data-show-count="false">Follow @RoyalFlushOn_</a>
                         <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                         <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
                             data-show-count="false">Tweet</a>
-                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
                             <!-- offline testing -->
-                            <!-- <button class="medium ui twitter button">
+                            <button class="medium ui twitter button">
                                 <i class="twitter icon"></i>
                                 follow
-                            </button> -->
-                            <!-- <button class="medium ui twitter button">
+                            </button>
+                            <button class="medium ui twitter button">
                                 <i class="twitter icon"></i>
                                 tweet
-                            </button> -->
+                            </button>
                         </div>
 
                         
